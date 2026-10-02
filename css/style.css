@@ -1,0 +1,338 @@
+﻿/* Expense & Budget Visualizer — styles */
+/* Task 3.1: Base (mobile-first) styles — no media queries */
+
+/* ─── Reset / Base ─────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #b7e4c7;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+#balance-container {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+#balance-label {
+  font-size: 0.875rem;
+  opacity: 0.85;
+}
+
+#balance-value {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #b7e4c7;
+}
+
+/* ─── Main layout ───────────────────────────────────────────────────────────── */
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* ─── Form sections ─────────────────────────────────────────────────────────── */
+
+section {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* ─── Field groups ──────────────────────────────────────────────────────────── */
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.field-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #444;
+}
+
+/* ─── Inputs, selects, submit button ───────────────────────────────────────── */
+
+input,
+select,
+button[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #1a1a1a;
+  appearance: auto;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid #2d6a4f;
+  outline-offset: 2px;
+  border-color: #b7e4c7;
+}
+
+button[type="submit"] {
+  background-color: #b7e4c7;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-top: 0.25rem;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus-visible {
+  background-color: #1e4d38;
+  outline: 2px solid #1e4d38;
+  outline-offset: 2px;
+}
+
+/* ─── Inline error messages ─────────────────────────────────────────────────── */
+
+.error-msg {
+  display: block;
+  color: #cc0000;
+  font-size: 0.875rem;
+  min-height: 1.2em; /* always reserves space to prevent layout shift */
+}
+
+/* ─── Transaction list ──────────────────────────────────────────────────────── */
+
+.empty-state {
+  padding: 1rem;
+  text-align: center;
+  color: #888;
+  font-size: 0.9375rem;
+}
+
+#transaction-list {
+  list-style: none;
+  overflow-y: auto;
+  max-height: 40vh;
+  padding: 0;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-bottom: 1px solid #eee;
+  gap: 0.5rem;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-item .item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 1;
+  min-width: 0; /* allow text truncation inside flex child */
+}
+
+.transaction-item .item-name {
+  font-weight: 500;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.transaction-item .item-meta {
+  font-size: 0.8125rem;
+  color: #666;
+}
+
+.transaction-item .item-amount {
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+  color: #1a1a1a;
+  flex-shrink: 0;
+}
+
+/* ─── Delete button ─────────────────────────────────────────────────────────── */
+
+.delete-btn {
+  min-height: 44px;
+  min-width: 44px;
+  background-color: #e53e3e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover,
+.delete-btn:focus-visible {
+  background-color: #c53030;
+  outline: 2px solid #c53030;
+  outline-offset: 2px;
+}
+
+/* ─── Global error banner ───────────────────────────────────────────────────── */
+
+#global-error-banner {
+  display: none;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ffc107;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* When JS sets the banner visible it removes the `hidden` attribute; 
+   we need to ensure the element is hidden by default via the HTML `hidden`
+   attribute, so the display:flex above only takes effect when `hidden` is absent. */
+#global-error-banner[hidden] {
+  display: none !important;
+}
+
+#global-error-banner .dismiss-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: #856404;
+  padding: 0;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+#global-error-banner .dismiss-btn:hover,
+#global-error-banner .dismiss-btn:focus-visible {
+  background-color: rgba(133, 100, 4, 0.12);
+  outline: 2px solid #856404;
+  outline-offset: 2px;
+}
+
+/* ─── Chart section ─────────────────────────────────────────────────────────── */
+
+#chart-section canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ─── Responsive breakpoints (Task 3.2) ────────────────────────────────────── */
+
+/* Tablet — two-column grid layout */
+@media (min-width: 600px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "form   chart"
+      "list   list";
+  }
+
+  #form-section  { grid-area: form; }
+  #chart-section { grid-area: chart; }
+  #list-section  { grid-area: list; }
+
+  #global-error-banner { grid-column: 1 / -1; }
+
+  /* Reinforce minimum touch-target size at all breakpoints (Req 6.5) */
+  input,
+  select,
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Desktop — three-column grid layout */
+@media (min-width: 1024px) {
+  main {
+    grid-template-columns: 320px 1fr 320px;
+    grid-template-areas: "form chart list";
+  }
+}
+
+/* ─── Chart placeholders and fallback ───────────────────────────────────────── */
+
+.chart-placeholder,
+.chart-fallback {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #888;
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+
+.chart-fallback {
+  color: #c53030;
+}
